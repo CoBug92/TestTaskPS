@@ -21,7 +21,9 @@ class PopUpViewController: UIViewController, UITableViewDelegate, UITableViewDat
     override func viewDidLoad() {
         super.viewDidLoad()
         showAnimation()
-        self.view1.layer.cornerRadius = 40
+        self.view1.layer.cornerRadius = 4
+        self.view1.layer.masksToBounds = true
+        
         
         self.view.backgroundColor = UIColor.black.withAlphaComponent(0.8)
 

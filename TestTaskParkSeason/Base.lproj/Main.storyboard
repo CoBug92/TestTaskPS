@@ -200,6 +200,7 @@
                                                 </tableViewCellContentView>
                                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 <connections>
+                                                    <outlet property="button" destination="drT-y6-oBA" id="NXc-WP-Tx8"/>
                                                     <outlet property="crownCount" destination="lMZ-IV-ram" id="XnS-nV-5Jk"/>
                                                     <outlet property="crownCountName" destination="X7F-5k-ft9" id="qy1-Y2-4U6"/>
                                                     <outlet property="price" destination="d0c-bR-ymQ" id="2fC-qe-qVR"/>
