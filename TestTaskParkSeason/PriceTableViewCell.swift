@@ -11,12 +11,16 @@ import UIKit
 class PriceTableViewCell: UITableViewCell {
 
     
+    @IBOutlet weak var clonePrice: UILabel!
     @IBOutlet weak var price: UILabel!
     @IBOutlet weak var crownCountName: UILabel!
     @IBOutlet weak var crownCount: UILabel!
     @IBOutlet weak var secondPrice: UILabel!
+    @IBOutlet weak var bestPrice: UILabel!
+    
     @IBOutlet weak var button: UIButton!
     
+    @IBOutlet weak var bestPriceView: UIView!
     
     
     override func awakeFromNib() {

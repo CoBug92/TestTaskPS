@@ -7,30 +7,29 @@
 //
 
 import UIKit
+import SpriteKit
 
 class PopUpViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var view1: UIView!
     @IBOutlet weak var tableView: UITableView!
     
-    let priceArray = priceTable(contents: priceTableCell(crownCountName: "1 Корона", crownCount: "1", price: "159 ₽/шт", secondPrice: "147 ₽/шт"),
-                                priceTableCell(crownCountName: "3 Короны", crownCount: "3", price: "129 ₽/шт", secondPrice: "390 ₽/шт"),
-                                priceTableCell(crownCountName: "5 Корон", crownCount: "5", price: "99 ₽/шт", secondPrice: "475 ₽/шт"))
+    let priceArray = priceTable(contents: priceTableCell(crownCountName: "1 Корона", crownCount: "1", price: "159 ₽/шт", secondPrice: "147 ₽"),
+                                priceTableCell(crownCountName: "3 Короны", crownCount: "3", price: "129 ₽/шт", secondPrice: "390 ₽"),
+                                priceTableCell(crownCountName: "5 Корон", crownCount: "5", price: "99 ₽/шт", secondPrice: "475 ₽"))
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         showAnimation()
-        self.view1.layer.cornerRadius = 4
-        self.view1.layer.masksToBounds = true
-        
         
         self.view.backgroundColor = UIColor.black.withAlphaComponent(0.8)
 
+        self.view1.layer.cornerRadius = 4
+        self.view1.layer.masksToBounds = true
         
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 85.0
-
     }
     
     
@@ -56,16 +55,21 @@ class PopUpViewController: UIViewController, UITableViewDelegate, UITableViewDat
         cell.secondPrice.text = priceArray.content[indexPath.row].secondPrice
         cell.crownCountName.text = priceArray.content[indexPath.row].crownCountName
         
+        if indexPath.row == (priceArray.content.count-1) {
+            cell.bestPriceView.isHidden = false
+            cell.clonePrice.text = priceArray.content[indexPath.row].price
+            
+            // Configure the view for the selected state
+            cell.bestPriceView.layer.cornerRadius = 20
+            cell.bestPriceView.layer.masksToBounds = true
+            cell.price.isHidden = true
+        }
         return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
+    func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        return nil
     }
-    
-    
-    
-    
     
     
     //MARK: - Animation FUNC
