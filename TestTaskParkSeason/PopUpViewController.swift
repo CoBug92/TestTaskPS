@@ -31,9 +31,9 @@ class PopUpViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     
     
-    let priceArray = priceTable(contents: priceTableCell(crownCountName: "1 Корона", crownCount: "1", price: "159 ₽/шт", secondPrice: "147 ₽"),
-                                priceTableCell(crownCountName: "3 Короны", crownCount: "3", price: "129 ₽/шт", secondPrice: "390 ₽"),
-                                priceTableCell(crownCountName: "5 Корон", crownCount: "5", price: "99 ₽/шт", secondPrice: "475 ₽"))
+    let priceArray = priceTable(contents: priceTableCell(crownCountName: "1 Корона", crownCount: "1", price: "159", secondPrice: "147 ₽"),
+                                priceTableCell(crownCountName: "3 Короны", crownCount: "3", price: "129", secondPrice: "390 ₽"),
+                                priceTableCell(crownCountName: "5 Корон", crownCount: "5", price: "99", secondPrice: "475 ₽"))
     
     
     
