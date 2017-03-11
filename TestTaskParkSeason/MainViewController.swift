@@ -11,6 +11,7 @@ import UIKit
 class MainViewController: UIViewController {
 
     @IBAction func goToSecondVC(_ sender: UIButton) {
+        
         let educationPopUpVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PopUp") as! PopUpViewController
         self.addChildViewController(educationPopUpVC)
         educationPopUpVC.view.frame = self.view.frame
@@ -22,7 +23,7 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
     }
 
 

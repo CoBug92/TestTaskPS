@@ -11,42 +11,64 @@ import SpriteKit
 
 class PopUpViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    
+    
+    
+    
     @IBOutlet weak var view1: UIView!
     @IBOutlet weak var tableView: UITableView!
+    
+    
+    
+    
+    
+    //MARK: - Action
+    @IBAction func closeAction(_ sender: UIButton) {
+        removeAnimation()
+    }
+    
+    
+    
+    
     
     let priceArray = priceTable(contents: priceTableCell(crownCountName: "1 Корона", crownCount: "1", price: "159 ₽/шт", secondPrice: "147 ₽"),
                                 priceTableCell(crownCountName: "3 Короны", crownCount: "3", price: "129 ₽/шт", secondPrice: "390 ₽"),
                                 priceTableCell(crownCountName: "5 Корон", crownCount: "5", price: "99 ₽/шт", secondPrice: "475 ₽"))
     
     
+    
+    
+    
+    //MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        showAnimation()
+        //Делаем прозрачным главный Вью
+        self.view.backgroundColor = UIColor.black.withAlphaComponent(0.3)
         
-        self.view.backgroundColor = UIColor.black.withAlphaComponent(0.8)
-
+        blurEffect()
+        
+        //Анимация показа ПопАпВью
+        showAnimation()
+        //Закругляем углы ПопАпВью
         self.view1.layer.cornerRadius = 4
         self.view1.layer.masksToBounds = true
         
+        //Авторесайзинг ячеек
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 85.0
     }
     
     
-    @IBAction func closeAction(_ sender: UIButton) {
-        removeAnimation()
-    }
     
     
+    
+    //MARK: - Table Function
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return priceArray.content.count
     }
-    
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! PriceTableViewCell
         
@@ -66,14 +88,28 @@ class PopUpViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
         return cell
     }
-    
     func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
         return nil
     }
     
     
-    //MARK: - Animation FUNC
     
+    
+    
+    func blurEffect() {
+        //Create darkBlurEffect
+        let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.light)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.frame = self.view.bounds
+        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        self.view.insertSubview(blurEffectView, at: 1)
+    }
+    
+    
+    
+    
+    
+    //MARK: - Animation Function
     func showAnimation() {
         self.view.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
         self.view.alpha = 1.0
@@ -82,7 +118,6 @@ class PopUpViewController: UIViewController, UITableViewDelegate, UITableViewDat
             self.view.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
         })
     }
-    
     func removeAnimation() {
         UIView.animate(withDuration: 0.25, animations: {
             self.view.alpha = 1.0
